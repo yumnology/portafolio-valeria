@@ -1,0 +1,684 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria Vásquez Gómez | Artista Audiovisual</title>
+    
+    <!-- Importamos fuentes de Google --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Iconos (para el botón de CV y redes sociales) --><script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* --- VARIABLES DE DISEÑO --- */
+        :root {
+            --color-fondo: #FFF7F1; /* Color crema/hueso para el fondo */
+            --color-fondo-secundario: #FFFFFF; /* Blanco puro para las tarjetas */
+            --color-texto-principal: #222222; /* Texto principal oscuro */
+            --color-texto-secundario: #555555; /* Texto secundario gris */
+            --color-acento: #B5CFAC; /* Verde suave para acentos */
+            --fuente-titulo: 'Montserrat', sans-serif;
+            --fuente-cuerpo: 'Lato', sans-serif;
+        }
+
+        /* --- ESTILOS GLOBALES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* La magia del scroll suave */
+        }
+
+        body {
+            font-family: var(--fuente-cuerpo);
+            background-color: var(--color-fondo);
+            color: var(--color-texto-principal);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fuente-titulo);
+            font-weight: 700;
+            color: var(--color-texto-principal); /* Cambiado de #ffffff */
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 900; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 50px; text-transform: uppercase; }
+        h3 { font-size: 1.5rem; color: var(--color-acento); } /* Los h3 usan el acento */
+
+        p {
+            color: var(--color-texto-secundario);
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- 1. BARRA DE NAVEGACIÓN --- */
+        .navbar {
+            position: fixed; /* Fija en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(255, 247, 241, 0.8); /* Fondo de vidrio claro */
+            backdrop-filter: blur(10px);
+            transition: top 0.3s;
+        }
+
+        .nav-logo {
+            font-family: var(--fuente-titulo);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-texto-principal); /* Cambiado de #fff */
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-texto-principal);
+            font-family: var(--fuente-titulo);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        /* Efecto de línea inferior */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--color-acento);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* --- 2. SECCIÓN: INICIO (HOME) --- */
+        #home {
+            height: 100vh; /* Ocupa toda la pantalla */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* IMAGEN DE FONDO */
+            /* Eliminado el overlay oscuro. Asume que usarás una imagen de fondo sutil */
+            background: url('') no-repeat center center/cover;
+            /* [CAMBIAR] la URL de fondo por una tuya que combine con #FFF7F1 */
+        }
+        
+        .home-content {
+            max-width: 800px;
+        }
+
+        /* Tu foto de perfil destacada en Home */
+        .profile-photo-home {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--color-acento); /* Borde con color de acento */
+            object-fit: cover;
+            box-shadow: 0 0 0 10px rgba(181, 207, 172, 0.3), 0 8px 30px rgba(0,0,0,0.1); /* Sombra verde y sutil */
+            margin-bottom: 30px;
+        }
+
+        .home-content h1 {
+            color: var(--color-texto-principal); /* Cambiado de #fff */
+            text-shadow: none; /* Eliminado text-shadow */
+            margin-bottom: 15px;
+        }
+
+        .home-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--color-texto-secundario); /* Cambiado de #fff */
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        /* Botón principal */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-acento);
+            color: #FFFFFF; /* Texto blanco en el botón verde */
+            font-family: var(--fuente-titulo);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(181, 207, 172, 0.6); /* Sombra con el color de acento */
+        }
+
+        /* --- 3. SECCIÓN: SOBRE MÍ (ABOUT ME) --- */
+        #about {
+            background-color: var(--color-fondo-secundario);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-grid h3 {
+            color: var(--color-texto-principal); /* Cambiado de #fff */
+            margin-bottom: 10px;
+        }
+
+        .cv-button {
+            display: inline-flex; /* Para alinear el icono */
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            background-color: transparent;
+            border: 2px solid var(--color-acento);
+            color: var(--color-acento);
+        }
+
+        .cv-button:hover {
+            background-color: var(--color-acento);
+            color: #FFFFFF; /* Texto blanco al hacer hover */
+            box-shadow: 0 5px 15px rgba(181, 207, 172, 0.6); /* Sombra con el color de acento */
+        }
+        
+        .cv-button i {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- 4. SECCIÓN: PROYECTOS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background-color: var(--color-fondo-secundario);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Sombra mucho más sutil */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Sombra sutil más grande */
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+        }
+        
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image-container img {
+            transform: scale(1.1); /* Efecto de zoom sutil */
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--color-texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        /* --- 5. MODAL DE PROYECTOS (LA VENTANA EMERGENTE) --- */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.5s;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--color-fondo-secundario);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 90%;
+            animation: slideIn 0.5s;
+        }
+        
+        .modal-video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .modal-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .close-button {
+            color: var(--color-texto-secundario); /* Cambiado de #aaa */
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--color-acento); /* Color de acento al cerrar */
+        }
+        
+        /* Animaciones del Modal */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- 6. ANIMACIÓN DE SCROLL --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+
+            .nav-links {
+                display: none; 
+                flex-direction: column;
+                gap: 20px;
+                background: var(--color-fondo-secundario);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr; /* Una columna en móvil */
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
+            }
+            .profile-photo-home {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ===== 1. BARRA DE NAVEGACIÓN ===== --><header class="navbar">
+        <a href="#home" class="nav-logo">Valeria Vásquez</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Inicio</a></li>
+            <li><a href="#about" class="nav-link">Sobre Mí</a></li>
+            <li><a href="#projects" class="nav-link">Proyectos</a></li>
+            <!-- Opcional: una sección de Contacto --><!-- <li><a href="#contact" class="nav-link">Contacto</a></li> --></ul>
+    </header>
+
+    <main>
+        <!-- ===== 2. SECCIÓN: INICIO (HOME) ===== --><section id="home">
+            <div class="home-content fade-in-section is-visible">
+                <!-- Tu Foto de Perfil Destacada --><img src="photos/SCR-20251117-bqjm.jpeg" alt="Tu Foto de Perfil" class="profile-photo-home">
+                
+                <h1>Valeria Vásquez Gómez</h1>
+                <p class="subtitle">Artes Audiovisuales - Directora Creativa</p>
+                <a href="#projects" class="cta-button">Ver Mis Proyectos</a>
+            </div>
+        </section>
+
+        <!-- ===== 3. SECCIÓN: SOBRE MÍ (ABOUT ME) ===== --><section id="about" class="container fade-in-section">
+            <h2>Sobre Mí</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Mi Historia</h3>
+                    <p>¡Hola! Soy Valeria Vásquez Gómez. Me apasionan los deportes como el tenis y el patinaje de velocidad, viajar y conocer culturas, la naturaleza y los animales, así como la fotografía y el sonido. Estoy a un paso de graduarme como Maestra en Artes Audiovisuales y cada vez me enamoro más de lo que hago y de la decisión que tomé. Elegir carrera fue complicado porque, como amante de la vida, todas me gustaban; al final elegí Artes Audiovisuales porque me permite navegar entre formatos mientras cuento historias a través de imágenes fijas y en movimiento, colores y sonidos, expresando ideas, emociones y perspectivas propias o de quien lo necesite de manera creativa.
+                        <br>Mi objetivo es contar historias que inspiren y conecten con las personas a través de la emoción, sin limitarme a un formato específico, pues la historia crea el formato y no al revés. Uno de mis formatos favoritos es el documental en cine y la publicidad mediante contenido digital en el mundo empresarial.
+                        <br>Me especializo en la dirección y producción de proyectos audiovisuales sobre temas sociales, culturales y medioambientales. En el futuro quiero aprender más sobre cómo emplear el storytelling para el crecimiento de empresas y marcas.
+                    </p> 
+                    <h3>Currículum Vitae</h3>
+                    <p>Soy una directora y productora audiovisual bilingüe (español nativo e inglés C1) , enfocada en contar historias con impacto. Actualmente, combino mi doble formación en Artes Audiovisuales y Administración de Empresas para liderar equipos y gestionar proyectos de cine, TV y digital, desde el desarrollo hasta la postproducción. Mi experiencia incluye la dirección y producción de múltiples proyectos documentales y de ficción , mi participación en un programa internacional en The Walt Disney Company , y la gestión de contenido digital que logró un incremento del 60% en ventas para una marca. Domino software clave de la industria como Adobe Premiere Pro, DaVinci Resolve y Pro Tools.</p>
+                    
+                    <!-- [CAMBIAR] Sube tu CV en PDF y pon el enlace aquí --><a href="RESUME Valeria_Vasquez_G.pdf" download class="cta-button cv-button">
+                        <i data-feather="download"></i>
+                        Descargar CV
+                    </a>
+                </div>
+                <div class="about-skills">
+                    <!-- Puedes poner una foto tuya aquí que muestre tu lado profesional/creativo --><img src="photos/SCR-20251117-bsfu.jpeg" alt="Tu foto profesional" style="width: 100%; border-radius: 10px;">
+                    <!-- Opcional: Un listado de tus principales habilidades si no quieres otra foto --><!--
+                    <h3>Habilidades Clave</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;">• Edición de Video (Premiere Pro, DaVinci Resolve)</li>
+                        <li style="margin-bottom: 8px;">• Motion Graphics (After Effects)</li>
+                        <li style="margin-bottom: 8px;">• Dirección de Fotografía</li>
+                        <li style="margin-bottom: 8px;">• Colorización y Etalonaje</li>
+                        <li style="margin-bottom: 8px;">• Fotografía de Eventos y Retratos</li>
+                        <li style="margin-bottom: 8px;">• Guionismo y Producción</li>
+                    </ul>
+                    --></div>
+            </div>
+        </section>
+
+        <!-- ===== 4. SECCIÓN: PROYECTOS ===== --><section id="projects" class="container fade-in-section">
+            <h2>Proyectos</h2>
+            <div class="project-grid">
+
+                <!-- PROYECTO 1 --><article class="project-card" 
+                         data-title="Barí Bio Asquiro - Cortometraje Documental (2023). "
+                         data-description="Durante la etapa de preproducción y producción, me encargué de la producción general del cortometraje, liderando de esta forma la logística y el manejo de recursos financieros y administrativos. Posteriormente, codirigí el proceso de creación de música original y durante la post-producción, llevé a cabo el diseño sonoro del proyecto."
+                         data-video-url="https://www.youtube.com/embed/QIji_e7i_Dg?si=uKZEpPEzaiXqQKZf"> <!-- [CAMBIAR] URL de tu video (usa el link 'embed' de Vimeo/YouTube) --><div class="project-image-container">
+                        <!-- [CAMBIAR] Miniatura del Proyecto 1 --><img src="photos/bari.jpeg" alt="Miniatura Proyecto 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Barí Bio Asquiro - Documental (2023).</h3>
+                        <p>Cortometraje - Producción general y diseño sonoro</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 2 --><article class="project-card"
+                         data-title="Siguiendo mi Postal - Piloto de TV Documental (2024)."
+                         data-description="Siguiendo mi Postal es un piloto de TV de no ficción con un fuerte componente histórico e inspirado en una exposición fotográfica, en el cual fui la directora, tanto del discurso y  la parte estética, como del proceso logístico. Mi principal propósito realizando este proyecto era hablar sobre la historia de la ciudad en la que vivo, entre muchas razones, para que la labor fotográfica del fallecido Gavassa y la de Saúl Meza, quien se ha encargado de recopilar archivos antiguos de Bucaramanga, Colombia, no quede en el olvido. 
+                          
+
+                          Este proyecto fue seleccionado y proyectado en la XIX Edición del Día del Fotógrafo y del Camarógrafo 2025.
+"
+                         
+                         data-video-url="photos/20220319_163250.jpg"> <!-- [CAMBIAR] Ejemplo de Vimeo --><div class="project-image-container">
+                        <!-- [CAMBIAR] Miniatura del Proyecto 2 --><img src="photos/mi_postal.jpeg" alt="Miniatura Proyecto 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Siguiendo mi Postal - Piloto de TV Documental (2024).</h3>
+                        <p>Dirección y estética - logística</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 3 --><article class="project-card"
+                         data-title="Stanislav - Cortometraje Animación (2023). END or NOT"
+                         data-description="En este cortometraje animado, asumí la dirección de arte, que incluía todo aquello relacionado con la atmósfera visual, el vestuario de los personajes, la selección de paletas de color y diseño de fondos. Durante el proceso, no me limité a solo dirigir este departamento, sino que también me involucré en la realización de fondos como el del teatro y los que corresponden al interior de la torre, además, en el diseño y dibujo de elementos como el teléfono, los muebles, el arma, etc. Por otro lado, contribuí en la selección de voces, lideré el proceso de doblaje y realicé la captura de las mismas. Finalmente, participé en la realización del diseño sonoro."
+                         data-video-url="https://www.youtube.com/embed/T0lzYbiL-aQ?si=4S9N7HwI-uJSt4na"> <!-- [CAMBIAR] URL de tu video --><div class="project-image-container">
+                        <!-- [CAMBIAR] Miniatura del Proyecto 3 --><img src="photos/raro.jpeg" alt="Miniatura Proyecto 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Stanislav - Cortometraje Animación (2023). END or NOT</h3>
+                        <p>Cortometraje Animación - Apoyo en proyecto con parte visual y sonora</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 4 --><article class="project-card"
+                         data-title="Volver a Nacer - Piloto de TV Ficción (2024)"
+
+                         data-description= " En este piloto de TV de ficción, me encargué, en todas las etapas de la realización, de la producción general, diseñando mecanismos de recolección de fondos, manejando los recursos financieros según los requerimientos de cada departamento, liderando aspectos logísticos, como convenios y canjes para uso de locaciones y estableciendo fechas y revisiones de avances para garantizar el cumplimiento del equipo completo. Así mismo, llegué a cumplir una labor de mediadora, pues al ser un grupo de trabajo de casi 20 personas, hubo fallas de comunicación. "
+                         data-video-url="https://www.youtube.com/embed/77989FWOr8c?si=oK2kGKXwQo8e2zZt"> <!-- [CAMBIAR] URL de tu video --><div class="project-image-container">
+                        <!-- [CAMBIAR] Miniatura del Proyecto 4 --><img src="photos/volver-a-nacer.jpeg" alt="Miniatura Proyecto 4">
+                    </div>
+                    <div class="project-content">
+                        <h3>Volver a Nacer - Piloto de TV Ficción (2024)</h3>
+                        <p>Desarrollo y producción</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 5 --><article class="project-card"
+                         data-title="Ventaja Fuera - Miniserie ficción (2024) "
+                         data-description="En esta miniserie, que consta de tres (3) capítulos, participé desde el momento de concepción de la idea hasta la fase final. Fui codirectora de este proyecto, en donde  Natalia Flórez, se encargó de aspectos de guion, y yo, de todo lo relacionado con la construcción de las escenas de tenis; entre ambas, realizamos la propuesta audiovisual para poder comunicarla a los departamentos de fotografía, arte y sonido. Participé en las jornadas de casting y en la selección del mismo, en días de ensayo actorales (se trabajaron escenas dramáticas y movimientos coreográficos para las escenas deportivas), en la dirección de extras y de personajes en la locación de la cancha de tenis. Finalmente, realicé el montaje de estas escenas. "
+                         data-video-url="https://www.youtube.com/embed/M-q290IJL1E"> <!-- [CAMBIAR] URL de tu video --><div class="project-image-container">
+                        <!-- [CAMBIAR] Miniatura del Proyecto 5 --><img src="photos/ventaja-fuera.png" alt="Miniatura Proyecto 5">
+                    </div>
+                    <div class="project-content">
+                        <h3>Ventaja Fuera - Miniserie ficción (2024) /h3>
+                        <p>Codirectora e ideas - logística y adminsitración</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 6 --><article class="project-card"
+                            data-title="Nombre del Proyecto 6"
+                            data-description="[CAMBIAR] Descripción del Proyecto 6. (Ej: Documental 'Voces Silenciadas'. Realicé el diseño sonoro y la grabación de audio directo, buscando dar voz a historias importantes con una inmersión auditiva profunda.)"
+                            data-video-url="https://www.youtube.com/embed/M-q290IJL1E"> <!-- [CAMBIAR] URL de tu video --><div class="project-image-container">
+                            <!-- [CAMBIAR] Miniatura del Proyecto 6 --><img src="https://placehold.co/600x400/333/FF1493?text=Proyecto+6" alt="Miniatura Proyecto 6">
+                        </div>
+                        <div class="project-content">
+                            <h3>Nombre del Proyecto 6</h3>
+                            <p>Documental - Diseño Sonoro</p>
+                        </div>
+
+                </article>
+
+                <!-- PROYECTO 7 --><article class="project-card"
+                            data-title="Nombre del Proyecto 7"
+                            data-description="[CAMBIAR] Descripción del Proyecto 7. (Ej: Documental 'Voces Silenciadas'. Realicé el diseño sonoro y la grabación de audio directo, buscando dar voz a historias importantes con una inmersión auditiva profunda.)"
+                            data-video-url="https://www.youtube.com/embed/M-q290IJL1E"> <!-- [CAMBIAR] URL de tu video --><div class="project-image-container">
+                            <!-- [CAMBIAR] Miniatura del Proyecto 7 --><img src="https://placehold.co/600x400/333/FF1493?text=Proyecto+7" alt="Miniatura Proyecto 7">
+                        </div>
+                        <div class="project-content">
+                            <h3>Nombre del Proyecto 7</h3>
+                            <p>Documental - Diseño Sonoro</p>
+                        </div>
+
+                </article>
+
+                <!-- Añade más proyectos copiando la estructura de <article> --><!-- Recuerda cambiar data-title, data-description, data-video-url y la imagen src --></div>
+        </section>
+
+        <!-- ===== SECCIÓN DE CONTACTO (Opcional, pero muy recomendable) ===== --><section id="contact" class="container fade-in-section" style="text-align: center; padding-bottom: 100px;">
+            <h2>Contacto</h2>
+            <p>¡Me encantaría saber de ti! Si tienes un proyecto en mente o simplemente quieres saludar, no dudes en contactarme.</p>
+            <a href="mailto:tu-email@correo.com" class="cta-button" style="margin-top: 20px;">
+                <i data-feather="mail" style="margin-right: 8px;"></i>
+                tu-email@correo.com
+            </a>
+            <div style="margin-top: 30px;">
+                <a href="https://vimeo.com/tucanal" target="_blank" style="color: var(--color-acento); margin: 0 15px;"><i data-feather="vimeo" style="width: 30px; height: 30px;"></i></a>
+                <a href="https://instagram.com/tuperfil" target="_blank" style="color: var(--color-acento); margin: 0 15px;"><i data-feather="instagram" style="width: 30px; height: 30px;"></i></a>
+                <a href="https://linkedin.com/in/tuperfil" target="_blank" style="color: var(--color-acento); margin: 0 15px;"><i data-feather="linkedin" style="width: 30px; height: 30px;"></i></a>
+                <!-- Añade más redes sociales si tienes (ej: behance, youtube) --></div>
+        </section>
+
+    </main>
+
+    <!-- ===== 5. MODAL DE PROYECTOS (ESTRUCTURA HTML) ===== --><div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-video-wrapper">
+                <iframe id="modal-video-iframe" 
+                        src="" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <h3 id="modal-project-title"></h3>
+            <p id="modal-project-description"></p>
+        </div>
+    </div>
+
+
+    <script>
+        // --- INICIO DEL CÓDIGO JAVASCRIPT ---
+
+        // Reemplazar iconos de Feather
+        feather.replace();
+
+        // --- LÓGICA DEL MODAL DE PROYECTOS ---
+        const modal = document.getElementById('project-modal');
+        const allProjectCards = document.querySelectorAll('.project-card');
+        const closeModalButton = document.querySelector('.close-button');
+        
+        // Elementos del modal para actualizar
+        const modalVideo = document.getElementById('modal-video-iframe');
+        const modalTitle = document.getElementById('modal-project-title');
+        const modalDescription = document.getElementById('modal-project-description');
+
+        allProjectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // 1. Obtener datos de la tarjeta clickeada
+                const title = card.getAttribute('data-title');
+                const description = card.getAttribute('data-description');
+                const videoUrl = card.getAttribute('data-video-url');
+
+                // 2. Asignar datos al modal
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                modalVideo.src = videoUrl;
+
+                // 3. Mostrar el modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+            });
+        });
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.style.display = 'none';
+            modalVideo.src = ""; // Detener el video
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+
+        closeModalButton.addEventListener('click', closeModal);
+        
+        // Cerrar al hacer clic fuera del contenido
+        modal.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+
+        // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
+        const sectionsToFade = document.querySelectorAll('.fade-in-section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // 15% de la sección debe estar visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Opcional: dejar de observar una vez que se ha animado
+                    // observer.unobserve(entry.target);
+                }
+                // Opcional: para que la animación se repita al salir y entrar
+                /*
+                else {
+                    entry.target.classList.remove('is-visible');
+                }
+                */
+            });
+        }, observerOptions);
+
+        sectionsToFade.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- LÓGICA DE NAVEGACIÓN ACTIVA AL HACER SCROLL ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]'); // Solo secciones con ID
+
+        window.addEventListener('scroll', () => {
+            let currentSectionId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY + window.innerHeight / 2 >= sectionTop) { // Ajustado para un mejor tracking
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
