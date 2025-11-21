@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,7 +227,8 @@
         /* --- 4. SECCIÓN: PROYECTOS --- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            /* CORRECCIÓN CRÍTICA PARA MÓVIL: Bajamos de 320px a 250px para asegurar que quepa en iPhone/Android */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 35px;
         }
 
@@ -298,21 +301,20 @@
             animation: slideIn 0.5s;
         }
         
-        /* Contenedor para Videos EXTERNOS (Youtube/Vimeo/Shorts) */
+        /* Contenedor para Videos EXTERNOS */
         .modal-video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Por defecto 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             margin-bottom: 20px;
             display: none; 
         }
         
-        /* Clase especial para videos Verticales (Shorts/Reels) */
         .modal-video-wrapper.vertical-mode {
-             padding-bottom: 177.77%; /* Proporción 9:16 (Vertical) */
-             max-width: 400px; /* Limitamos el ancho para que no sea gigante en desktop */
-             margin: 0 auto 20px auto; /* Centramos */
+             padding-bottom: 177.77%;
+             max-width: 400px;
+             margin: 0 auto 20px auto;
         }
 
         .modal-video-wrapper iframe {
@@ -324,7 +326,7 @@
             border: 0;
         }
 
-        /* === ESTILOS PARA VIDEO LOCAL (MP4 - Fallback) === */
+        /* === ESTILOS PARA VIDEO LOCAL === */
         .modal-local-video-wrapper {
             width: 100%;
             text-align: center;
@@ -442,9 +444,13 @@
             transform: translateY(0);
         }
 
+        /* CORRECCIÓN MÓVIL: Ajustes específicos para pantallas pequeñas */
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 1.8rem; }
+            /* Reducir padding del contenedor para dar más espacio a las cards */
+            .container { padding: 60px 20px; }
+            
             .nav-links {
                 display: none; 
                 flex-direction: column;
@@ -501,7 +507,7 @@
                     </a>
                 </div>
                 <div class="about-skills">
-                    <img src="photos/SCR-20251117-bsfu.jpeg" alt="Tu foto profesional" style="width: 100%; border-radius: 10px;">
+                    <img src="photos/SCR-20251117-bsfu.jpeg" loading="lazy" alt="Tu foto profesional" style="width: 100%; border-radius: 10px;">
                 </div>
             </div>
         </section>
@@ -510,14 +516,14 @@
             <h2>Proyectos</h2>
             <div class="project-grid">
 
-                <!-- PROYECTO 1 (VIDEO YOUTUBE) -->
+                <!-- PROYECTO 1 -->
                 <article class="project-card" 
                          data-type="video"
                          data-title="Barí Bio Asquiro - Cortometraje Documental (2023)"
                          data-description="Durante la etapa de preproducción y producción, me encargué de la producción general del cortometraje, liderando de esta forma la logística y el manejo de recursos financieros y administrativos. Posteriormente, codirigí el proceso de creación de música original y durante la post-producción, llevé a cabo el diseño sonoro del proyecto."
                          data-video-url="https://www.youtube.com/embed/QIji_e7i_Dg?si=uKZEpPEzaiXqQKZf">
                     <div class="project-image-container">
-                        <img src="photos/bari.jpeg" alt="Miniatura Proyecto 1">
+                        <img src="photos/bari.jpeg" loading="lazy" alt="Miniatura Proyecto 1">
                     </div>
                     <div class="project-content">
                         <h3>Barí Bio Asquiro - Documental</h3>
@@ -525,14 +531,14 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 2 (VIDEO YOUTUBE) -->
+                <!-- PROYECTO 2 -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Siguiendo mi Postal - Piloto de TV Documental (2024)"
                          data-description="Siguiendo mi Postal es un piloto de TV de no ficción con un fuerte componente histórico e inspirado en una exposición fotográfica. Proyecto seleccionado en la XIX Edición del Día del Fotógrafo y del Camarógrafo 2025."
                          data-video-url="https://www.youtube.com/embed/JLHxKAmlYzM?si=7_bu9-wZQSphk7gm">
                     <div class="project-image-container">
-                        <img src="photos/mi_postal.jpeg" alt="Miniatura Proyecto 2">
+                        <img src="photos/mi_postal.jpeg" loading="lazy" alt="Miniatura Proyecto 2">
                     </div>
                     <div class="project-content">
                         <h3>Siguiendo mi Postal - Piloto TV</h3>
@@ -540,16 +546,14 @@
                     </div>
                 </article>
 
-                
-
-                <!-- PROYECTO 4 (VIDEO YOUTUBE) -->
+                <!-- PROYECTO 3 -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Volver a Nacer - Piloto de TV Ficción (2024)"
                          data-description=" En este piloto de TV de ficción, me encargué, en todas las etapas de la realización, de la producción general, diseñando mecanismos de recolección de fondos, manejando los recursos financieros según los requerimientos de cada departamento, liderando aspectos logísticos, como convenios y canjes para uso de locaciones y estableciendo fechas y revisiones de avances para garantizar el cumplimiento del equipo completo. Así mismo, llegué a cumplir una labor de mediadora, pues al ser un grupo de trabajo de casi 20 personas, hubo fallas de comunicación."
                          data-video-url="https://www.youtube.com/embed/77989FWOr8c?si=oK2kGKXwQo8e2zZt">
                     <div class="project-image-container">
-                        <img src="photos/volver-a-nacer.jpeg" alt="Miniatura Proyecto 4">
+                        <img src="photos/volver-a-nacer.jpeg" loading="lazy" alt="Miniatura Proyecto 4">
                     </div>
                     <div class="project-content">
                         <h3>Volver a Nacer - Piloto Ficción</h3>
@@ -557,7 +561,7 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 5 (VIDEO YOUTUBE) -->
+                <!-- PROYECTO 4 -->
                 <article class="project-card"
                         data-type="video"
                         data-title="Ventaja Fuera"
@@ -565,7 +569,7 @@
 Por otro lado, lideré el proceso de producción en su departamento correspondiente, guiando así lo que respecta a logística, finanzas y administración en cada etapa del proceso."
                         data-video-url="https://www.youtube.com/embed/XXvafm_blRo?si=soWrSdeMPoMIqUxT">
                     <div class="project-image-container">
-                        <img src="photos/vf.jpeg" alt="Miniatura Proyecto 6">
+                        <img src="photos/vf.jpeg" loading="lazy" alt="Miniatura Proyecto 6">
                     </div>
                     <div class="project-content">
                         <h3>Ventaja Fuera - Miniserie</h3>
@@ -573,14 +577,14 @@ Por otro lado, lideré el proceso de producción en su departamento correspondie
                     </div>
                 </article>
 
-                <!-- PROYECTO 6 (FOTOS - CARRUSEL) -->
+                <!-- PROYECTO 5 -->
                 <article class="project-card"
                         data-type="gallery"
                         data-title="Proyecto Final - Galería"
                         data-description="Bajo la dirección de Luis José Galvis, realizador audiovisual, participé en el equipo de selección de casting de la serie, además, fui standing para algunos actores. Actualmente no se encuentra en YouTube."
                         data-images="photos/proyecto-final.jpeg, https://placehold.co/800x500/B5CFAC/FFF?text=Foto+2, https://placehold.co/800x500/FF1493/FFF?text=Foto+3">
                     <div class="project-image-container">
-                        <img src="photos/proyecto-final.jpeg" alt="Miniatura Proyecto 6">
+                        <img src="photos/proyecto-final.jpeg" loading="lazy" alt="Miniatura Proyecto 6">
                     </div>
                     <div class="project-content">
                         <h3>Proyecto Final - Serie</h3>
@@ -588,7 +592,7 @@ Por otro lado, lideré el proceso de producción en su departamento correspondie
                     </div>
                 </article>
 
-                <!-- PROYECTO 7 (VIDEO YOUTUBE) -->
+                <!-- PROYECTO 6 -->
                 <article class="project-card"
                             data-type="video"
                             data-title="Cuando el páramo habla"
@@ -596,7 +600,7 @@ Por otro lado, lideré el proceso de producción en su departamento correspondie
 La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se realizaran las modificaciones es el siguiente"
                             data-video-url="https://www.youtube.com/embed/hsnABUkFWBw?si=SUglyB1I2qzGkp7c">
                     <div class="project-image-container">
-                        <img src="photos/paramo.jpeg" alt="Miniatura Proyecto 7">
+                        <img src="photos/paramo.jpeg" loading="lazy" alt="Miniatura Proyecto 7">
                     </div>
                     <div class="project-content">
                         <h3>Cuando el páramo habla</h3>
@@ -604,15 +608,14 @@ La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se
                     </div>
                 </article>
 
-                <!-- PROYECTO 8 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <!-- PROYECTO 7 -->
                 <article class="project-card"
                             data-type="video"
                             data-title="Reel promocional de Disney Cultural Exchange Program"
                             data-description="Reel promocional para el programa de intercambio de Disney."
                             data-video-url="https://youtube.com/shorts/c4V6OBRMA3c?si=zZmtzssw57hVr1np">
-                            <!-- TIP: Aquí puedes poner tu link de YouTube Short directamente, ej: https://www.youtube.com/shorts/VIDEO_ID -->
                     <div class="project-image-container">
-                        <img src="photos/reels/disney.jpeg" alt="Miniatura Proyecto 7">
+                        <img src="photos/reels/disney.jpeg" loading="lazy" alt="Miniatura Proyecto 7">
                     </div>
                     <div class="project-content">
                         <h3>Reel promocional: Disney Cultural Exchange Program</h3>
@@ -620,15 +623,14 @@ La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se
                     </div>
                 </article>
 
-                <!-- PROYECTO 9 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <!-- PROYECTO 8 -->
                 <article class="project-card"
                             data-type="video"
                             data-title="Páramo reel"
                             data-description="El páramo es un ecosistema de alta montaña que se encuentra en pocos países pero fundamental para el mundo. A través de un vídeo corto, quise registrar su majestuosidad."
                             data-video-url="https://www.youtube.com/shorts/XXu5gyrJ_ns?si=5KvdMiClot4RabNm">
-                            <!-- TIP: Pega aquí tu link de YouTube Short -->
                     <div class="project-image-container">
-                        <img src="photos/reels/paramo.jpeg" alt="Miniatura Proyecto 9">
+                        <img src="photos/reels/paramo.jpeg" loading="lazy" alt="Miniatura Proyecto 9">
                     </div>
                     <div class="project-content">
                         <h3>Reel Páramo </h3>
@@ -636,15 +638,14 @@ La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se
                     </div>
                 </article>
 
-                <!-- PROYECTO 10 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <!-- PROYECTO 9 -->
                 <article class="project-card"
                             data-type="video"
                             data-title="Epcot"
                             data-description="A través de tomas que hice durante mi estancia en Orlando, registré en un minuto, lo que fue este parque temático desde mi mirada."
                             data-video-url="https://www.youtube.com/shorts/XXu5gyrJ_ns?si=5KvdMiClot4RabNm">
-                            <!-- TIP: Pega aquí tu link de YouTube Short -->
                     <div class="project-image-container">
-                        <img src="photos/reels/epcot.jpeg" alt="Miniatura Proyecto 10">
+                        <img src="photos/reels/epcot.jpeg" loading="lazy" alt="Miniatura Proyecto 10">
                     </div>
                     <div class="project-content">
                         <h3>Reel de Epcot</h3>
@@ -652,14 +653,14 @@ La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se
                     </div>
                 </article>
 
-                <!-- PROYECTO 11 Zalut pulpable -->
+                <!-- PROYECTO 10: Zalut pulpable -->
                 <article class="project-card"
                             data-type="gallery"
                             data-title="zalut pulpable"
                             data-description="En el año 2022, tomé fotos en el café y restaurante Zalut Palpable, en Bucaramanga, Colombia."
                             data-images="photos/zalut_pulpable/20220319_163227.jpg, photos/zalut_pulpable/20220319_163250.jpg, photos/zalut_pulpable/20220319_164521.jpg, photos/zalut_pulpable/20220319_164835.jpg, photos/zalut_pulpable/20220319_165410.jpg, photos/zalut_pulpable/20220319_165903.jpg">
                     <div class="project-image-container">
-                        <img src="photos/zalut_pulpable/20220319_164835.jpg" alt="Miniatura Proyecto 11">
+                        <img src="photos/zalut_pulpable/20220319_164835.jpg" loading="lazy" alt="Miniatura Proyecto 11">
                     </div>
                     <div class="project-content">
                         <h3>Café Zalut Pulpable</h3>
@@ -667,35 +668,37 @@ La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se
                     </div>
                 </article>
 
-                <!-- PROYECTO 12 Fotografia documental LLama -->
+                <!-- PROYECTO 11: Llama Perú -->
                 <article class="project-card"
                             data-type="gallery"
                             data-title="Restaurante Llama Perú"
                             data-description="El 2024, tomé fotos con formato para historias en el restaurante Llama Perú, en Bucaramanga, Colombia "
-                            data-images="photos\llama_peru\20240331_163422.jpg, photos\llama_peru\20240331_163455.jpg, photos\llama_peru\20240331_163955 (1) (2).jpg, photos\llama_peru\20240331_164027 (2).jpg">
+                            data-images="photos/llama_peru/20240331_163422.jpg, photos/llama_peru/20240331_163455.jpg, photos/llama_peru/20240331_163955 (1) (2).jpg, photos/llama_peru/20240331_164027 (2).jpg">
                     <div class="project-image-container">
-                        <img src="photos/llama_peru/llama_peru.png" alt="Miniatura Proyecto 12">
+                        <img src="photos/llama_peru/llama_peru.png" loading="lazy" alt="Miniatura Proyecto 12">
                     </div>
                     <div class="project-content">
                         <h3>Restaurante Llama Perú</h3>
                         <p>Contenido promocional para instagram</p>
                     </div>
                 </article>
-                <!-- PROYECTO 12 Fotografia documental LLama -->
+
+                <!-- PROYECTO 12: Fotografía documental (Rutas corregidas a / y .jpeg) -->
                 <article class="project-card"
                             data-type="gallery"
                             data-title="Fotografía documental"
                             data-description=" En una salida de campo, tomé fotografías de estilo documental en las que retraté realidades sociales complejas y un poco de la cotidianidad en el centro de Bucaramanga, Colombia. "
-                            data-images=" photos\crudo1.jpeg, photos\crudo2.jpeg, photos\crudo3.jpeg, photos\IMG_9857 (1)1.JPG, photos\IMG_9863.JPG, photos\IMG_9929.JPG, photos\IMG_9938.JPG, photos\IMG_9949.JPG, photos\IMG_9990.JPG">
+                            data-images="photos/crudo1.jpeg, photos/crudo2.jpeg, photos/crudo3.jpeg, photos/IMG_9857 (1)1.JPG, photos/IMG_9863.JPG, photos/IMG_9929.JPG, photos/IMG_9938.JPG, photos/IMG_9949.JPG, photos/IMG_9990.JPG">
                     <div class="project-image-container">
-                        <img src="photos\IMG_9863.JPG" alt="Miniatura Proyecto 12">
+                        <img src="photos/IMG_9863.JPG" loading="lazy" alt="Miniatura Proyecto 12">
                     </div>
                     <div class="project-content">
                         <h3>Fotografía documental</h3>
                         <p>Contenido promocional para instagram</p>
                     </div>
                 </article>
-                <!-- PROYECTO 3 (VIDEO YOUTUBE) -->
+
+                <!-- PROYECTO 13: Stanislav -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Stanislav - Cortometraje Animación (2023)"
@@ -704,7 +707,7 @@ En este cortometraje animado, asumí la dirección de arte, que incluía todo aq
 Por otro lado, contribuí en la selección de voces, lideré el proceso de doblaje y realicé la captura de las mismas. Finalmente, participé en la realización del diseño sonoro."
                          data-video-url="https://www.youtube.com/embed/T0lzYbiL-aQ?si=xZOi6g2KSNmoGh8_">
                     <div class="project-image-container">
-                        <img src="photos/raro.jpeg" alt="Miniatura Proyecto 3">
+                        <img src="photos/raro.jpeg" loading="lazy" alt="Miniatura Proyecto 3">
                     </div>
                     <div class="project-content">
                         <h3>Stanislav - Animación</h3>
@@ -901,13 +904,14 @@ Por otro lado, contribuí en la selección de voces, lideré el proceso de dobla
             }
         });
 
-        // --- ANIMACIÓN SCROLL ---
+        // --- ANIMACIÓN SCROLL (Ajustado para móvil) ---
         const sectionsToFade = document.querySelectorAll('.fade-in-section');
 
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.15
+            // CAMBIO IMPORTANTE: Threshold más bajo (0.1) para que se active más fácil en móvil
+            threshold: 0.1 
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
