@@ -175,8 +175,8 @@
             text-transform: uppercase;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer; /* Añadido cursor pointer para botones */
-            border: none; /* Asegurar que no tenga borde si es button */
+            cursor: pointer;
+            border: none;
         }
 
         .cta-button:hover {
@@ -298,14 +298,21 @@
             animation: slideIn 0.5s;
         }
         
-        /* Contenedor para Videos */
+        /* Contenedor para Videos EXTERNOS (Youtube/Vimeo/Shorts) */
         .modal-video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Proporción 16:9 */
+            padding-bottom: 56.25%; /* Por defecto 16:9 */
             height: 0;
             overflow: hidden;
             margin-bottom: 20px;
-            display: none; /* Se mostrará solo si es video */
+            display: none; 
+        }
+        
+        /* Clase especial para videos Verticales (Shorts/Reels) */
+        .modal-video-wrapper.vertical-mode {
+             padding-bottom: 177.77%; /* Proporción 9:16 (Vertical) */
+             max-width: 400px; /* Limitamos el ancho para que no sea gigante en desktop */
+             margin: 0 auto 20px auto; /* Centramos */
         }
 
         .modal-video-wrapper iframe {
@@ -317,13 +324,37 @@
             border: 0;
         }
 
-        /* === NUEVO: ESTILOS PARA EL CARRUSEL DE FOTOS === */
+        /* === ESTILOS PARA VIDEO LOCAL (MP4 - Fallback) === */
+        .modal-local-video-wrapper {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none; 
+            background: #000; 
+            border-radius: 8px;
+            overflow: visible;
+            min-height: 400px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-local-video-wrapper video {
+            max-width: 100%; 
+            max-height: 75vh; 
+            height: auto; 
+            width: auto;
+            min-height: 300px; 
+            display: block;
+        }
+
+        /* === ESTILOS PARA EL CARRUSEL DE FOTOS === */
         .modal-gallery-wrapper {
             position: relative;
             width: 100%;
-            height: 500px; /* Altura fija para la galería */
+            height: 500px; 
             background-color: #f9f9f9;
-            display: none; /* Se mostrará solo si es galería */
+            display: none; 
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
@@ -334,7 +365,7 @@
         .modal-gallery-image {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* La imagen se ajusta sin recortarse */
+            object-fit: contain;
         }
 
         .gallery-btn {
@@ -373,7 +404,6 @@
             font-size: 0.8rem;
             color: #333;
         }
-        /* =============================================== */
 
         .close-button {
             color: var(--color-texto-secundario);
@@ -429,7 +459,7 @@
             .about-grid { grid-template-columns: 1fr; }
             .modal-content { margin: 10% auto; width: 95%; padding: 20px; }
             .profile-photo-home { width: 150px; height: 150px; }
-            .modal-gallery-wrapper { height: 300px; } /* Galería más pequeña en móvil */
+            .modal-gallery-wrapper { height: 300px; } 
         }
     </style>
 </head>
@@ -480,7 +510,7 @@
             <h2>Proyectos</h2>
             <div class="project-grid">
 
-                <!-- PROYECTO 1 (VIDEO) -->
+                <!-- PROYECTO 1 (VIDEO YOUTUBE) -->
                 <article class="project-card" 
                          data-type="video"
                          data-title="Barí Bio Asquiro - Cortometraje Documental (2023)"
@@ -495,7 +525,7 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 2 (VIDEO) -->
+                <!-- PROYECTO 2 (VIDEO YOUTUBE) -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Siguiendo mi Postal - Piloto de TV Documental (2024)"
@@ -510,11 +540,13 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 3 (VIDEO) -->
+                <!-- PROYECTO 3 (VIDEO YOUTUBE) -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Stanislav - Cortometraje Animación (2023)"
-                         data-description="En este cortometraje animado, asumí la dirección de arte, vestuario de personajes, paletas de color y diseño de fondos. También participé en doblaje y diseño sonoro."
+                         data-description="Este proyecto resultó de una colaboración con amigos en donde ellos tenían una idea, y querían que les ayudara con la parte visual y sonora del proyecto. 
+En este cortometraje animado, asumí la dirección de arte, que incluía todo aquello relacionado con la atmósfera visual, el vestuario de los personajes, la selección de paletas de color y diseño de fondos. Durante el proceso, no me limité a solo dirigir este departamento, sino que también me involucré en la realización de fondos como el del teatro y los que corresponden al interior de la torre, además, en el diseño y dibujo de elementos como el teléfono, los muebles, el arma, etc. 
+Por otro lado, contribuí en la selección de voces, lideré el proceso de doblaje y realicé la captura de las mismas. Finalmente, participé en la realización del diseño sonoro."
                          data-video-url="https://www.youtube.com/embed/T0lzYbiL-aQ?si=xZOi6g2KSNmoGh8_">
                     <div class="project-image-container">
                         <img src="photos/raro.jpeg" alt="Miniatura Proyecto 3">
@@ -525,11 +557,11 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 4 (VIDEO) -->
+                <!-- PROYECTO 4 (VIDEO YOUTUBE) -->
                 <article class="project-card"
                          data-type="video"
                          data-title="Volver a Nacer - Piloto de TV Ficción (2024)"
-                         data-description="En este piloto de TV de ficción, me encargué de la producción general en todas las etapas."
+                         data-description=" En este piloto de TV de ficción, me encargué, en todas las etapas de la realización, de la producción general, diseñando mecanismos de recolección de fondos, manejando los recursos financieros según los requerimientos de cada departamento, liderando aspectos logísticos, como convenios y canjes para uso de locaciones y estableciendo fechas y revisiones de avances para garantizar el cumplimiento del equipo completo. Así mismo, llegué a cumplir una labor de mediadora, pues al ser un grupo de trabajo de casi 20 personas, hubo fallas de comunicación."
                          data-video-url="https://www.youtube.com/embed/77989FWOr8c?si=oK2kGKXwQo8e2zZt">
                     <div class="project-image-container">
                         <img src="photos/volver-a-nacer.jpeg" alt="Miniatura Proyecto 4">
@@ -540,11 +572,12 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 5 (VIDEO) -->
+                <!-- PROYECTO 5 (VIDEO YOUTUBE) -->
                 <article class="project-card"
                         data-type="video"
                         data-title="Ventaja Fuera"
-                        data-description="En esta miniserie fui codirectora, encargándome de la construcción de escenas de tenis y montaje, además de liderar el departamento de producción."
+                        data-description="En esta miniserie, que consta de tres (3) capítulos, participé desde el momento de concepción de la idea hasta la fase final. Fui codirectora de este proyecto, en donde  Natalia Flórez, se encargó de aspectos de guion, y yo, de todo lo relacionado con la construcción de las escenas de tenis; entre ambas, realizamos la propuesta audiovisual para poder comunicarla a los departamentos de fotografía, arte y sonido. Participé en las jornadas de casting y en la selección del mismo, en días de ensayo actorales (se trabajaron escenas dramáticas y movimientos coreográficos para las escenas deportivas), en la dirección de extras y de personajes en la locación de la cancha de tenis. Finalmente, realicé el montaje de estas escenas. 
+Por otro lado, lideré el proceso de producción en su departamento correspondiente, guiando así lo que respecta a logística, finanzas y administración en cada etapa del proceso."
                         data-video-url="https://www.youtube.com/embed/XXvafm_blRo?si=soWrSdeMPoMIqUxT">
                     <div class="project-image-container">
                         <img src="photos/vf.jpeg" alt="Miniatura Proyecto 6">
@@ -556,14 +589,11 @@
                 </article>
 
                 <!-- PROYECTO 6 (FOTOS - CARRUSEL) -->
-                <!-- Fíjate que aquí cambiamos data-type a "gallery" y usamos data-images -->
                 <article class="project-card"
                         data-type="gallery"
                         data-title="Proyecto Final - Galería"
-                        data-description="Bajo la dirección de Luis José Galvis. Serie ganadora MINTIC y New York Independent Cinema Awards (2024-2025). Aquí presento una selección de fotogramas."
+                        data-description="Bajo la dirección de Luis José Galvis, realizador audiovisual, participé en el equipo de selección de casting de la serie, además, fui standing para algunos actores. Actualmente no se encuentra en YouTube."
                         data-images="photos/proyecto-final.jpeg, https://placehold.co/800x500/B5CFAC/FFF?text=Foto+2, https://placehold.co/800x500/FF1493/FFF?text=Foto+3">
-                        <!-- NOTA: En 'data-images', separa las URLs de tus fotos con una coma -->
-                        
                     <div class="project-image-container">
                         <img src="photos/proyecto-final.jpeg" alt="Miniatura Proyecto 6">
                     </div>
@@ -573,11 +603,12 @@
                     </div>
                 </article>
 
-                <!-- PROYECTO 7 (VIDEO) -->
+                <!-- PROYECTO 7 (VIDEO YOUTUBE) -->
                 <article class="project-card"
                             data-type="video"
                             data-title="Cuando el páramo habla"
-                            data-description="Cortometraje documental de medio ambiente que busca registrar el proceso de regeneración de los frailejones."
+                            data-description="Desde marzo del 2025, me encuentro dirigiendo y produciendo el cortometraje documental de medio ambiente con componentes científicos al que nombré “Cuando el Páramo habla”. Este proyecto busca registrar, a través de cinco (5) voces distintas (un ecólogo, dos ingenieros ambientales, un guía turístico y habitante de la región y una mujer campesina) el proceso de regeneración de los frailejones, una especie endémica del ecosistema de páramo en Colombia tras el incendio forestal que tuvo lugar en enero del 2024. Desde la dirección, busco plasmar en el discurso mi interés y pasión por el cuidado del medio ambiente y la naturaleza, generando un espacio pedagógico que dé pie a la reflexión. Desde la producción, busco generar conexiones con personas a través del manejo de recursos, y en el futuro, por medio del plan de distribución darle la oportunidad al público de conocer a agentes relevantes durante el acontecimiento y qué es lo que ha sucedido en realidad. 
+La idea ha ido cambiando con el tiempo, pero el teaser original, antes de que se realizaran las modificaciones es el siguiente"
                             data-video-url="https://www.youtube.com/embed/hsnABUkFWBw?si=SUglyB1I2qzGkp7c">
                     <div class="project-image-container">
                         <img src="photos/paramo.jpeg" alt="Miniatura Proyecto 7">
@@ -585,6 +616,98 @@
                     <div class="project-content">
                         <h3>Cuando el páramo habla</h3>
                         <p>Documental - Dirección, producción y diseño sonoro</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 8 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <article class="project-card"
+                            data-type="video"
+                            data-title="Reel promocional de Disney"
+                            data-description="Reel promocional para el programa de intercambio de Disney."
+                            data-video-url="https://youtube.com/shorts/c4V6OBRMA3c?si=zZmtzssw57hVr1np">
+                            <!-- TIP: Aquí puedes poner tu link de YouTube Short directamente, ej: https://www.youtube.com/shorts/VIDEO_ID -->
+                    <div class="project-image-container">
+                        <img src="photos/reels/disney.jpeg" alt="Miniatura Proyecto 7">
+                    </div>
+                    <div class="project-content">
+                        <h3>Reel promocional: Disney</h3>
+                        <p>Reel promocional (Video Local / Shorts)</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 9 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <article class="project-card"
+                            data-type="video"
+                            data-title="Páramo reel"
+                            data-description="El páramo es un ecosistema de alta montaña que se encuentra en pocos países pero fundamental para el mundo. A través de un vídeo corto, quise registrar su majestuosidad."
+                            data-video-url="https://www.youtube.com/shorts/XXu5gyrJ_ns?si=5KvdMiClot4RabNm">
+                            <!-- TIP: Pega aquí tu link de YouTube Short -->
+                    <div class="project-image-container">
+                        <img src="photos/reels/paramo.jpeg" alt="Miniatura Proyecto 9">
+                    </div>
+                    <div class="project-content">
+                        <h3>Reel Páramo </h3>
+                        <p>Registro de mi visita en el Páramo (Video Local / Shorts)</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 10 (REEL - AHORA SOPORTA LINK DE YOUTUBE SHORTS) -->
+                <article class="project-card"
+                            data-type="video"
+                            data-title="Epcot"
+                            data-description="A través de tomas que hice durante mi estancia en Orlando, registré en un minuto, lo que fue este parque temático desde mi mirada."
+                            data-video-url="https://www.youtube.com/shorts/XXu5gyrJ_ns?si=5KvdMiClot4RabNm">
+                            <!-- TIP: Pega aquí tu link de YouTube Short -->
+                    <div class="project-image-container">
+                        <img src="photos/reels/epcot.jpeg" alt="Miniatura Proyecto 10">
+                    </div>
+                    <div class="project-content">
+                        <h3>Reel de Epcot</h3>
+                        <p>Visita al parque temático de Disney Epcot (Video Local / Shorts)</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 11 Zalut pulpable -->
+                <article class="project-card"
+                            data-type="gallery"
+                            data-title="zalut pulpable"
+                            data-description="En el año 2022, tomé fotos en el café y restaurante Zalut Palpable, en Bucaramanga, Colombia."
+                            data-images="photos/zalut_pulpable/20220319_163227.jpg, photos/zalut_pulpable/20220319_163250.jpg, photos/zalut_pulpable/20220319_164521.jpg, photos/zalut_pulpable/20220319_164835.jpg, photos/zalut_pulpable/20220319_165410.jpg, photos/zalut_pulpable/20220319_165903.jpg">
+                    <div class="project-image-container">
+                        <img src="photos/zalut_pulpable/20220319_164835.jpg" alt="Miniatura Proyecto 11">
+                    </div>
+                    <div class="project-content">
+                        <h3>Café Zalut Pulpable</h3>
+                        <p>Contenido promocional para instagram</p>
+                    </div>
+                </article>
+
+                <!-- PROYECTO 12 Fotografia documental LLama -->
+                <article class="project-card"
+                            data-type="gallery"
+                            data-title="Restaurante Llama Perú"
+                            data-description="El 2024, tomé fotos con formato para historias en el restaurante Llama Perú, en Bucaramanga, Colombia "
+                            data-images="photos\llama_peru\20240331_163422.jpg, photos\llama_peru\20240331_163455.jpg, photos\llama_peru\20240331_163955 (1) (2).jpg, photos\llama_peru\20240331_164027 (2).jpg">
+                    <div class="project-image-container">
+                        <img src="photos/llama_peru/llama_peru.png" alt="Miniatura Proyecto 12">
+                    </div>
+                    <div class="project-content">
+                        <h3>Restaurante Llama Perú</h3>
+                        <p>Contenido promocional para instagram</p>
+                    </div>
+                </article>
+                <!-- PROYECTO 12 Fotografia documental LLama -->
+                <article class="project-card"
+                            data-type="gallery"
+                            data-title="Fotografía documental"
+                            data-description=" En una salida de campo, tomé fotografías de estilo documental en las que retraté realidades sociales complejas y un poco de la cotidianidad en el centro de Bucaramanga, Colombia. "
+                            data-images=" photos/_MG_0761.CR2,photos/_MG_0769.CR2  ,photos\flor.jpeg, photos\IMG_9857 (1)1.JPG, photos\IMG_9863.JPG, photos\IMG_9929.JPG, photos\IMG_9938.JPG, photos\IMG_9949.JPG, photos\IMG_9990.JPG">
+                    <div class="project-image-container">
+                        <img src="photos\IMG_9857 (1)1.JPG" alt="Miniatura Proyecto 12">
+                    </div>
+                    <div class="project-content">
+                        <h3>Fotografía documental</h3>
+                        <p>Contenido promocional para instagram</p>
                     </div>
                 </article>
 
@@ -607,12 +730,12 @@
 
     </main>
 
-    <!-- ===== MODAL DE PROYECTOS (ESTRUCTURA ACTUALIZADA) ===== -->
+    <!-- ===== MODAL DE PROYECTOS ===== -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             
-            <!-- Contenedor para Video (se oculta si es galería) -->
+            <!-- Contenedor para Videos EXTERNOS (Youtube/Vimeo/Shorts) -->
             <div class="modal-video-wrapper" id="modal-video-wrapper">
                 <iframe id="modal-video-iframe" 
                         src="" 
@@ -622,7 +745,14 @@
                 </iframe>
             </div>
 
-            <!-- Contenedor para Galería de Fotos (se oculta si es video) -->
+            <!-- Contenedor para Videos LOCALES (MP4/Reels) - Fallback -->
+            <div class="modal-local-video-wrapper" id="modal-local-video-wrapper">
+                <video id="modal-local-video" controls playsinline>
+                    Tu navegador no soporta videos HTML5.
+                </video>
+            </div>
+
+            <!-- Contenedor para Galería de Fotos -->
             <div class="modal-gallery-wrapper" id="modal-gallery-wrapper">
                 <img src="" alt="Imagen Galería" class="modal-gallery-image" id="modal-gallery-image">
                 <button class="gallery-btn prev-btn" id="prev-btn">&#10094;</button>
@@ -648,6 +778,11 @@
         // Elementos DOM del modal
         const modalVideoWrapper = document.getElementById('modal-video-wrapper');
         const modalVideo = document.getElementById('modal-video-iframe');
+        
+        // Elementos Nuevos para Video Local
+        const modalLocalVideoWrapper = document.getElementById('modal-local-video-wrapper');
+        const modalLocalVideo = document.getElementById('modal-local-video');
+
         const modalGalleryWrapper = document.getElementById('modal-gallery-wrapper');
         const modalGalleryImage = document.getElementById('modal-gallery-image');
         const modalTitle = document.getElementById('modal-project-title');
@@ -665,29 +800,50 @@
             card.addEventListener('click', () => {
                 const title = card.getAttribute('data-title');
                 const description = card.getAttribute('data-description');
-                const type = card.getAttribute('data-type') || 'video'; // Por defecto video
+                const type = card.getAttribute('data-type') || 'video'; 
+                let videoUrl = card.getAttribute('data-video-url');
 
                 modalTitle.textContent = title;
                 modalDescription.textContent = description;
 
+                // Limpiar estados anteriores
+                modalVideoWrapper.style.display = 'none';
+                modalLocalVideoWrapper.style.display = 'none';
+                modalGalleryWrapper.style.display = 'none';
+                modalVideo.src = "";
+                modalLocalVideo.pause();
+                modalLocalVideo.src = "";
+                modalLocalVideoWrapper.style.display = 'none';
+                // Quitar clase vertical por defecto
+                modalVideoWrapper.classList.remove('vertical-mode');
+
                 if (type === 'video') {
-                    // MODO VIDEO
-                    modalVideoWrapper.style.display = 'block';
-                    modalGalleryWrapper.style.display = 'none';
-                    
-                    const videoUrl = card.getAttribute('data-video-url');
-                    modalVideo.src = videoUrl;
+                    // 1. Detectar si es un YouTube Short
+                    if (videoUrl && videoUrl.includes('youtube.com/shorts/')) {
+                        // Convertir a formato Embed y activar modo vertical
+                        videoUrl = videoUrl.replace('/shorts/', '/embed/');
+                        modalVideoWrapper.style.display = 'block';
+                        modalVideoWrapper.classList.add('vertical-mode');
+                        modalVideo.src = videoUrl;
+                    } 
+                    // 2. Detectar si es video local (MP4)
+                    else if (videoUrl && videoUrl.endsWith('.mp4')) {
+                        modalLocalVideoWrapper.style.display = 'flex'; 
+                        modalLocalVideo.src = videoUrl;
+                        modalLocalVideo.load(); 
+                    } 
+                    // 3. Video Normal (Youtube estándar/Vimeo)
+                    else {
+                        modalVideoWrapper.style.display = 'block';
+                        modalVideo.src = videoUrl;
+                    }
                 
                 } else if (type === 'gallery') {
                     // MODO GALERÍA
-                    modalVideoWrapper.style.display = 'none';
-                    modalGalleryWrapper.style.display = 'flex'; // flex para centrar contenido
-                    modalVideo.src = ""; // Detener video si había uno
+                    modalGalleryWrapper.style.display = 'flex'; 
 
-                    // Obtener imágenes (separadas por coma)
                     const imagesString = card.getAttribute('data-images');
                     if (imagesString) {
-                        // Split por coma y limpiar espacios
                         currentGalleryImages = imagesString.split(',').map(url => url.trim());
                         currentImageIndex = 0;
                         updateGalleryDisplay();
@@ -712,7 +868,6 @@
                 currentImageIndex--;
                 updateGalleryDisplay();
             } else {
-                // Loop al final
                 currentImageIndex = currentGalleryImages.length - 1;
                 updateGalleryDisplay();
             }
@@ -723,7 +878,6 @@
                 currentImageIndex++;
                 updateGalleryDisplay();
             } else {
-                // Loop al principio
                 currentImageIndex = 0;
                 updateGalleryDisplay();
             }
@@ -732,8 +886,10 @@
         // Función para cerrar el modal
         function closeModal() {
             modal.style.display = 'none';
-            modalVideo.src = ""; // Detener el video
-            document.body.style.overflow = 'auto'; // Restaurar scroll
+            modalVideo.src = ""; 
+            modalLocalVideo.pause(); 
+            modalLocalVideo.src = ""; 
+            document.body.style.overflow = 'auto'; 
         }
 
         closeModalButton.addEventListener('click', closeModal);
